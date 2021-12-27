@@ -23,6 +23,45 @@ https://templatemo.com/tm-529-ramayana
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-style.css">
     <link rel="stylesheet" href="assets/css/owl.css">
+    <style type="text/css">
+
+    code {
+      font-family: MyFancyCustomFont, monospace;
+      font-size: inherit;
+    }
+
+    .cd {
+       border-radius: .5rem;
+        background: #ffeff0;
+        border: 1px solid #ddd;
+        border-left: 3px solid #f36d33;
+        color: #666;
+        page-break-inside: avoid;
+        font-family: monospace;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 1.6em;
+        max-width: 100%;
+        overflow: auto;
+        padding: .8rem .8rem .8rem;
+        display: block;
+        word-wrap: break-word;
+        box-decoration-break: clone;
+    }
+    .cd p{
+
+      color:black;
+    }
+    .cd span{
+
+      color:green;
+      text-transform:uppercase;
+    }
+    .cd code{
+
+      color:blue;
+    }
+    </style>
 
   </head>
 
@@ -88,12 +127,92 @@ Keeping in view the aforementioned shortcomings, we present RELD, a single unifi
               </div>
             </section>
 
-            <!-- Left Image
+            <!-- Queries -->
+          <section id="source" class="top-image">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+
+                  <div class="down-content">
+                    <h4>Some usful queires</h4>
+                    <p>Following are a few examples SPARQL queries on RELD endpoint.   </p>
+                <code class='cd'>
+                    <p>Get all Relations from Google RE dataset.</p>
+
+                    <span> SELECT DISTINCT</span> <code>?relation</code> <br> <span>FROM</span> < https://reld.dice-research.org/Google_RE > </br> <span>WHERE</span>
+                    {
+            <br>        <code>?relation</code> < https://reld.dice-research.org/schema/hasSentence > <code>?sent</code> .
+                    }
+                  </code>
+                  <code class='cd'>
+                      <p>Get all triples from Wikipedia-Wikidata</p>
+
+                      <span> SELECT DISTINCT</span> count(*) <br> <span>FROM</span> < http://reld.dice-research.org/Wiki-RE > </br> <span>WHERE</span>
+                      {
+              <br>        <code>?s</code> <code>?p</code>   <code>?o</code> .
+                      }
+                    </code>
+                    <code class='cd'>
+                        <p>Select all relations that have sentences which have number of token > 150 </p>
+
+                        <span> prefix </span> reldv: < https://reld.dice-research.org/schema/ ><br>
+                        <span>SELECT  DISTINCT</span> <code>?r</code> <span><br> where</span> {<br> <code>?r</code>  reldv:hasSentence <code>?o</code>.<br>
+                        <code>?o</code> reldv:numOfTokens <code>?t</code>.<br>
+                          Filter(<code>?t</code> > 150)<br>
+                        }
+                      </code>
+                      <code class='cd'>
+                          <p>Select all sentences containing more than 2 named entities </p>
+
+                         <span>  Prefix </span> reldv: < https://reld.dice-research.org/schema/ ><br>
+                          <span> SELECT   DISTINCT </span> <code>?sentence</code><br>
+                          <span>Where</span>{<br>
+                            <code>?rId </code> reldv:hasSentence <code>?sentence</code>.
+
+                            <code>?sentence</code> reldv:hasNamedEntity <code>?ne</code>.
+<br>
+                          }  <br>Group by <code>?sentence</code> having (count(<code>?ne</code>) > 2)
+                        </code>
+                        <code class='cd'>
+                            <p>Select relations with average number of subject position, object position </p>
+
+                            <span>Prefix</span> reld: < https://reld.dice-research.org/schema/ >
+                            <span>SELECT  DISTINCT</span> <code>?rId</code>   (AVG(?subPos) as ?avgSubjPosition) (AVG(?objPos) as ?avgObjPosition)<br>
+                               <span> where</span>{
+        <br>                       <code>?rId </code> reld:hasSentence <code>?sentence.</code>
+                               <br>
+                               <code>?sentence</code> reld:subPos <code>?subPos.</code>
+<br>
+                               <code>?sentence</code> reld:objPos <code> ?objPos.</code>
+    <br>
+                               }
+                          </code>
+
+                          <code class='cd'>
+                              <p>Select sentences with number of between tokens is higher than 10 </p>
+
+                              <span>Prefix</span> reld: < https://reld.dice-research.org/schema/ >
+                              <span>SELECT  DISTINCT</span> <code>?sentence</code>   <br>
+                                 <span> where</span>{
+          <br>                       <code>?rId </code> reld:hasSentence <code>?sentence.</code>
+                                 <br>
+                                 <code>?sentence</code> reld:reld:numBetToken <code>?bt.</code>
+  <br>
+      <br>
+    } <span> Group by </span> <code>?sentence</code> having(?nToken > 10)
+                            </code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+            <!-- Left
             <section class="left-image">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-6">
-                    <img src="assets/images/left-image.jpg" alt="">
+                    <img src="assets/images/mod.png" alt="">
                   </div>
                   <div class="col-md-6">
                     <div class="right-content">
@@ -108,26 +227,110 @@ Keeping in view the aforementioned shortcomings, we present RELD, a single unifi
               </div>
             </section>
 -->
-            <!-- Right Image
+              <!-- Framework -->
             <section class="right-image">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="left-content">
-                      <h4>Ante Interdum Raclette</h4>
-                      <p>Lorem ipsum dolor amet raclette chambray bitters, hammock celiac slow-carb flexitarian four dollar toast food truck health goth. Air plant brunch food truck vegan scenester organic crucifix irony pour-over pop-up austin hexagon kitsch swag. Godard literally humblebrag cloud bread vice master cleanse chambray typewriter put a bird on it brooklyn forage.<br><br>Air plant brunch food truck vegan scenester organic crucifix irony pour-over pop-up austin hexagon kitsch swag. Godard literally humblebrag cloud bread vice master cleanse chambray typewriter put bird brooklyn</p>
+                      <h4>RELD Framework</h4>
+                      <p>The diagram shows the basic RELD Framework. This diagram explains the basic schema of the RELD. The edges represents the relations between different classes <br>
+                      while the rectengles represents classes in our schema. The right bottom of the image shows some vocabularies and ontologies we used in RELD.
+                      The complete explaination of vocabularies and ontologies are available in other sections. </p>
                       <div class="primary-button">
                         <a href="#">Read More</a>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <img src="assets/images/right-image.jpg" alt="">
+                    <img src="assets/images/mod.png" alt="">
                   </div>
                 </div>
               </div>
             </section>
--->
+            <hr>
+            <!-- Name spaces -->
+            <section id="source" class="top-image">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+
+                  <div class="down-content">
+                    <h4>Used Namespaces</h4>
+                    <p>Some of the namespaces we used in RELD  </p>
+                    <code class='cd'>
+                      @prefix reldv: &lt;https://reld.dice-research.org/schema/&gt; <br>
+                      @prefix reldr: &lt;https://reld.dice-research.org/resource/&gt .<br>
+                      @prefix dcterms: &lt;http://purl.org/dc/terms/&gt .<br>
+                      @prefix fabio: &lt;http://purl.org/spar/fabio/&gt .<br>
+                      @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt .<br>
+                      @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt .<br>
+                      @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt .<br>
+                      @prefix schema: &lt;http://schema.org/&gt .<br>
+                      @prefix xml: &lt;http://www.w3.org/XML/1998/namespace&gt .<br>
+                      @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt .<br>
+                      @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt .<br>
+                      @prefix ps: &lt;http://www.wikidata.org/prop/statement/&gt .<br>
+                      @prefix freebase: &lt;http://rdf.freebase.com/ns&gt .<br>
+                      @prefix dbo: &lt;http://dbpedia.org/ontology/&gt .<br>
+                      </code>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </section>
+
+            <!-- Example Resource -->
+            <section id="source" class="top-image">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+
+                  <div class="down-content">
+                    <h4>Example Resource</h4>
+                    <p>Following is an example resource:  </p>
+                    <code class='cd'>
+                      dataset:FewRel reldv:hasRelation reldr:R-2031;<br>
+                        dc:title reldr:FewRel ;<br>
+                        dc:source reldr:Wikipedia_Wikidata ;<br>
+                        reldv:primaryTask reldr:Fewshot_RE ;<br>
+                        reldv:reType reldr:binary .<br>
+                      <span># RELATION INSTANCE #</span><br>
+                      reldr:R-2031 rdfs:label "part of" ;<br>
+                          owl:equivalentProperty reldr:part_of ;<br>
+                          owl:sameAs ps:P361,<br>
+                              reldr:R-3031,<br>
+                              reldr:R-5031 ;<br>
+                          reldv:distribution "valid"^^xsd:string ;<br>
+                          reldv:hasSentence reldr:S_FewRel_2101 .<br>
+                      <span># SENTANCE  INSTANCE #</span><br>
+                    reldr:S_FewRel_2101 reldv:direction false ;<br>
+                        reldv:hasNamedEntity reldr:ne_f6706 ;<br>
+                        reldv:hasObject reldr:object_488 ;<br>
+                        reldv:hasSubject reldr:subject_2044 ;<br>
+                        reldv:hasText "Lava Tree State Monument is a public park<br>
+                        located southeast of Pahoa in the<br>
+                        Puna District on the island of Hawaii ."@en ;<br>
+                        reldv:numAftToken 1 ;<br>
+                        reldv:numBefToken 11 ;<br>
+                        reldv:numBetToken 6 ;<br>
+                        reldv:numOfObjToken 3 ;<br>
+                        reldv:numOfPunctuations 1 ;<br>
+                        reldv:numOfSubToken 1 ;<br>
+                        reldv:numOfTokens 22 ;<br>
+                        reldv:objPos 18 ;<br>
+                        reldv:subPos 11 .<br>
+                    <span># SUBJECT, OBJECT & NAMED ENTITY  INSTANCES #</span><br>
+                    reldr:object_488 reldv:object reldr:island_of_hawaii<br>
+                    reldr:subject_2044 reldv:subject reldr:pahoa .<br>
+                    reldr:ne_f6706 a dbo:GPE ;<br>
+                        rdfs:label "hawaii"@en .<br>
+                      </code>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </section>
           </div>
         </div>
 
@@ -152,7 +355,7 @@ Keeping in view the aforementioned shortcomings, we present RELD, a single unifi
                   <span class="opener">Tutorial</span>
                   <ul>
                     <li><a href="#">Frame Work</a></li>
-                    <li><a href="#">Descriptive Examples</a></li>
+                    <li><a href="#">Namespaces</a></li>
                     <li><a href="#">Usage</a></li>
                     <li><a href="#">Queries</a></li>
                   </ul>
@@ -201,7 +404,7 @@ Keeping in view the aforementioned shortcomings, we present RELD, a single unifi
 
             <!-- Footer
             <footer id="footer">
-              <p class="copyright">Copyright &copy; 2019 Company Name
+              <p class="copyright">Maintainer : Manzoor Ali
               <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
             </footer>-->
 
