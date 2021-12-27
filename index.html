@@ -77,7 +77,9 @@ https://templatemo.com/tm-529-ramayana
             <!-- Header -->
             <header id="header">
               <div class="logo">
-                <a href="index.html">RELD: <span style="text-transform: capitalize; color: gray;"> A Knowledge Graph of Relation Extraction Datasets</span></a>
+
+                <a href="index.html">RELD: <span style="text-transform: capitalize; color: gray;"> A Knowledge Graph of Relation Extraction Datasets</span></a
+
               </div>
             </header>
 
@@ -108,104 +110,9 @@ Keeping in view the aforementioned shortcomings, we present RELD, a single unifi
                 </div>
               </div>
             </section>
-              <!-- Source Code -->
-            <section id="source" class="top-image">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-12">
 
-                    <div class="down-content">
-                      <h4>Source Code</h4>
-                      <p>Source code for converting RE datasets to RDF is available on our <a href="https://github.com/dice-group/RELD/blob/main/README.md">Github repository </a>. The requirments for running the code, and the basic commond to rund
-                      the code are given on the README file.  </p>
-                    <!--  <div class="primary-button">
-                        <a href="#">Read More</a>
-                      </div> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
 
-            <!-- Queries -->
-          <section id="source" class="top-image">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-12">
 
-                  <div class="down-content">
-                    <h4>Some usful queires</h4>
-                    <p>Following are a few examples SPARQL queries on RELD endpoint.   </p>
-                <code class='cd'>
-                    <p>Get all Relations from Google RE dataset.</p>
-
-                    <span> SELECT DISTINCT</span> <code>?relation</code> <br> <span>FROM</span> < https://reld.dice-research.org/Google_RE > </br> <span>WHERE</span>
-                    {
-            <br>        <code>?relation</code> < https://reld.dice-research.org/schema/hasSentence > <code>?sent</code> .
-                    }
-                  </code>
-                  <code class='cd'>
-                      <p>Get all triples from Wikipedia-Wikidata</p>
-
-                      <span> SELECT DISTINCT</span> count(*) <br> <span>FROM</span> < http://reld.dice-research.org/Wiki-RE > </br> <span>WHERE</span>
-                      {
-              <br>        <code>?s</code> <code>?p</code>   <code>?o</code> .
-                      }
-                    </code>
-                    <code class='cd'>
-                        <p>Select all relations that have sentences which have number of token > 150 </p>
-
-                        <span> prefix </span> reldv: < https://reld.dice-research.org/schema/ ><br>
-                        <span>SELECT  DISTINCT</span> <code>?r</code> <span><br> where</span> {<br> <code>?r</code>  reldv:hasSentence <code>?o</code>.<br>
-                        <code>?o</code> reldv:numOfTokens <code>?t</code>.<br>
-                          Filter(<code>?t</code> > 150)<br>
-                        }
-                      </code>
-                      <code class='cd'>
-                          <p>Select all sentences containing more than 2 named entities </p>
-
-                         <span>  Prefix </span> reldv: < https://reld.dice-research.org/schema/ ><br>
-                          <span> SELECT   DISTINCT </span> <code>?sentence</code><br>
-                          <span>Where</span>{<br>
-                            <code>?rId </code> reldv:hasSentence <code>?sentence</code>.
-
-                            <code>?sentence</code> reldv:hasNamedEntity <code>?ne</code>.
-<br>
-                          }  <br>Group by <code>?sentence</code> having (count(<code>?ne</code>) > 2)
-                        </code>
-                        <code class='cd'>
-                            <p>Select relations with average number of subject position, object position </p>
-
-                            <span>Prefix</span> reld: < https://reld.dice-research.org/schema/ >
-                            <span>SELECT  DISTINCT</span> <code>?rId</code>   (AVG(?subPos) as ?avgSubjPosition) (AVG(?objPos) as ?avgObjPosition)<br>
-                               <span> where</span>{
-        <br>                       <code>?rId </code> reld:hasSentence <code>?sentence.</code>
-                               <br>
-                               <code>?sentence</code> reld:subPos <code>?subPos.</code>
-<br>
-                               <code>?sentence</code> reld:objPos <code> ?objPos.</code>
-    <br>
-                               }
-                          </code>
-
-                          <code class='cd'>
-                              <p>Select sentences with number of between tokens is higher than 10 </p>
-
-                              <span>Prefix</span> reld: < https://reld.dice-research.org/schema/ >
-                              <span>SELECT  DISTINCT</span> <code>?sentence</code>   <br>
-                                 <span> where</span>{
-          <br>                       <code>?rId </code> reld:hasSentence <code>?sentence.</code>
-                                 <br>
-                                 <code>?sentence</code> reld:reld:numBetToken <code>?bt.</code>
-  <br>
-      <br>
-    } <span> Group by </span> <code>?sentence</code> having(?nToken > 10)
-                            </code>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
 
             <!-- Left
             <section class="left-image">
@@ -228,17 +135,18 @@ Keeping in view the aforementioned shortcomings, we present RELD, a single unifi
             </section>
 -->
               <!-- Framework -->
-            <section class="right-image">
+            <section class="right-image" id="framwork">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="left-content">
                       <h4>RELD Framework</h4>
-                      <p>The diagram shows the basic RELD Framework. This diagram explains the basic schema of the RELD. The edges represents the relations between different classes <br>
-                      while the rectengles represents classes in our schema. The right bottom of the image shows some vocabularies and ontologies we used in RELD.
-                      The complete explaination of vocabularies and ontologies are available in other sections. </p>
+                      <p>The diagram shows the basic RELD Framework. This diagram explains the basic schema of the RELD. The edges represent the relations between different classes,
+while the rectangles represent classes in our schema. The right bottom of the image shows some vocabulary and ontologies we used in RELD. The complete explanation of vocabularies and ontologies is available in other sections.
+For the detailed schema and it's description click on link below on Read More button.
+ </p>
                       <div class="primary-button">
-                        <a href="#">Read More</a>
+                        <a href="https://github.com/dice-group/RELD/blob/main/ontology.ttl">Read More</a>
                       </div>
                     </div>
                   </div>
@@ -250,7 +158,7 @@ Keeping in view the aforementioned shortcomings, we present RELD, a single unifi
             </section>
             <hr>
             <!-- Name spaces -->
-            <section id="source" class="top-image">
+            <section id="namespaces" class="top-image">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-md-12">
@@ -281,7 +189,7 @@ Keeping in view the aforementioned shortcomings, we present RELD, a single unifi
             </section>
 
             <!-- Example Resource -->
-            <section id="source" class="top-image">
+            <section id="example" class="top-image">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-md-12">
@@ -331,8 +239,125 @@ Keeping in view the aforementioned shortcomings, we present RELD, a single unifi
               </div>
             </div>
             </section>
+            <!-- Queries -->
+          <section id="query" class="top-image">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+
+                  <div class="down-content">
+                    <h4>Some usful queires</h4>
+                    <p>Following are a few examples SPARQL queries on RELD endpoint.   </p>
+                <code class='cd'>
+                    <p>Get all Relations from Google RE dataset.</p>
+
+                    <span> SELECT DISTINCT</span> <code>?relation</code> <br> <span>FROM</span> &lt;https://reld.dice-research.org/Google_RE&gt; </br> <span>WHERE</span>
+                    {
+            <br>        <code>?relation</code> &lt;https://reld.dice-research.org/schema/hasSentence&gt; <code>?sent</code> .
+                    }
+                  </code>
+                  <code class='cd'>
+                      <p>Get all triples from Wikipedia-Wikidata</p>
+
+                      <span> SELECT DISTINCT</span> count(*) <br> <span>FROM</span> &lt;http://reld.dice-research.org/Wiki-RE&gt; </br> <span>WHERE</span>
+                      {
+              <br>        <code>?s</code> <code>?p</code>   <code>?o</code> .
+                      }
+                    </code>
+                    <code class='cd'>
+                        <p>Select all relations that have sentences which have number of token > 150 </p>
+
+                        <span> prefix </span> reldv: &lt;https://reld.dice-research.org/schema/&gt;<br>
+                        <span>SELECT  DISTINCT</span> <code>?r</code> <span><br> where</span> {<br> <code>?r</code>  reldv:hasSentence <code>?o</code>.<br>
+                        <code>?o</code> reldv:numOfTokens <code>?t</code>.<br>
+                          Filter(<code>?t</code> > 150)<br>
+                        }
+                      </code>
+                      <code class='cd'>
+                          <p>Select all sentences containing more than 2 named entities </p>
+
+                         <span>  Prefix </span> reldv: &lt;https://reld.dice-research.org/schema/&gt;<br>
+                          <span> SELECT   DISTINCT </span> <code>?sentence</code><br>
+                          <span>Where</span>{<br>
+                            <code>?rId </code> reldv:hasSentence <code>?sentence</code>.
+
+                            <code>?sentence</code> reldv:hasNamedEntity <code>?ne</code>.
+<br>
+                          }  <br>Group by <code>?sentence</code> having (count(<code>?ne</code>) > 2)
+                        </code>
+                        <code class='cd'>
+                            <p>Select relations with average number of subject position, object position </p>
+
+                            <span>Prefix</span> reld: &lt;https://reld.dice-research.org/schema/&gt;<br>
+                            <span>SELECT  DISTINCT</span> <code>?rId</code>   (AVG(?subPos) as ?avgSubjPosition) (AVG(?objPos) as ?avgObjPosition)<br>
+                               <span> where</span>{
+        <br>                       <code>?rId </code> reld:hasSentence <code>?sentence.</code>
+                               <br>
+                               <code>?sentence</code> reld:subPos <code>?subPos.</code>
+<br>
+                               <code>?sentence</code> reld:objPos <code> ?objPos.</code>
+    <br>
+                               }
+                          </code>
+
+                          <code class='cd'>
+                              <p>Select sentences with number of between tokens is higher than 10 </p><br>
+
+                              <span>Prefix</span> reld: &lt;https://reld.dice-research.org/schema/&gt;
+                              <span>SELECT  DISTINCT</span> <code>?sentence</code>   <br>
+                                 <span> where</span>{
+          <br>                       <code>?rId </code> reld:hasSentence <code>?sentence.</code>
+                                 <br>
+                                 <code>?sentence</code> reld:reld:numBetToken <code>?bt.</code>
+  <br>
+      <br>
+    } <span> Group by </span> <code>?sentence</code> having(?nToken > 10)
+                            </code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+            <!-- Availability 1-->
+            <section class="right-image" id="endpoint">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="left-content">
+                      <h4>Live SPARQL Endpoint</h4>
+                      <p>The live <a href="http://reld.cs.upb.de:8890/sparql">endpoint</a> of RELD is available for querying anywhere on the internet. We have made it available on the Virtuoso open-source server. The endpoint is currently under maintenance it might result in slow query execution. In the meanwhile, you can also run a local instance of the endpoint. The details of running the local instance are available on our Github <a href="https://github.com/dice-group/RELD/blob/main/README.md">README file </a>. Running two simple commands, and your local endpoint in Virtuoso is running. The prepared endpoint is available <a herf="https://hobbitdata.informatik.uni-leipzig.de/RELD/endpoint/">here</a> in zip format. </p>
+
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <h4 id ="source">Source Code</h4>
+                    <p>Source code for converting RE datasets to RDF is available on our <a href="https://github.com/dice-group/RELD/blob/main/README.md">Github repository </a>. The requirments for running the code, and the basic commond to rund
+                    the code are given on the README file.  </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- Availability 2-->
+            <section class="right-image" id="dumps">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="left-content">
+                      <h4>Static Dumps</h4>
+                      <p>The first version of the dumps is available for <a href="https://hobbitdata.informatik.uni-leipzig.de/RELD/ttl_dumps/">downloads</a>. The dumps are in .ttl format. The ttl files names are self-descriptive. Each file represents an individual dataset converted to RDF. Same file names can be used during querying on our live endpoint. </p>
+
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <h4 id ="json">Dumps in JSON-LD</h4>
+                    <p>We have also provide dumps in <a href="https://hobbitdata.informatik.uni-leipzig.de/RELD/json_dumps/">JSON-LD format</a> for non semantic web users. Other communities in NLP, less aware of RDF and Semantic web technologies can download RELD dumps in well known JSON format.  </p>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
+        <!-- Source Code -->
 
       <!-- Sidebar -->
         <div id="sidebar">
@@ -354,20 +379,23 @@ Keeping in view the aforementioned shortcomings, we present RELD, a single unifi
                 <li>
                   <span class="opener">Tutorial</span>
                   <ul>
-                    <li><a href="#">Frame Work</a></li>
-                    <li><a href="#">Namespaces</a></li>
-                    <li><a href="#">Usage</a></li>
-                    <li><a href="#">Queries</a></li>
+
+                    <li><a href="#framwork">Framework</a></li>
+                    <li><a href="#namespaces">Namespaces</a></li>
+                    <li><a href="#example">Example Resource</a></li>
+                    <li><a href="#query">Queries</a></li>
+
                   </ul>
                 </li>
-                <li><a href="#source">Source Code</a></li>
+
                 <li><a href="shortcodes.html">Sustainability</a></li>
                 <li>
                   <span class="opener">Availaibility</span>
                   <ul>
-                    <li><a href="#">Live Endpoint</a></li>
-                    <li><a href="#">Static Dumps </a></li>
-                    <li><a href="#">Dumps in JSON-LD</a></li>
+                    <li><a href="#source">Source Code</a></li>
+                    <li><a href="#endpoint">Live Endpoint</a></li>
+                    <li><a href="#dumps">Static Dumps </a></li>
+                    <li><a href="#json">Dumps in JSON-LD</a></li>
                   </ul>
                 </li>
 
@@ -402,11 +430,11 @@ Keeping in view the aforementioned shortcomings, we present RELD, a single unifi
               </div>
             </div>
 
-            <!-- Footer
+            <!-- Footer-->
             <footer id="footer">
-              <p class="copyright">Maintainer : Manzoor Ali
+              <p class="copyright">Maintainer : <a href="https://dice-research.org/ManzoorAli">Manzoor Ali </a>
               <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
-            </footer>-->
+            </footer>
 
           </div>
         </div>
