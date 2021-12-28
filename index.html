@@ -325,6 +325,33 @@ For the detailed schema and it's description click on link below on Read More bu
       <br>
     } <span> Group by </span> <code>?sentence</code> having(?nToken > 10)
                             </code>
+                            <code class='cd'>
+                                <p>Selecting 40 relations based on some filter criteria </p><br>
+                                <span>Prefix</span> reld: &lt;https://reld.dice-research.org/schema/&gt;<br>
+                                <span> SELECT </span> <code> ?rId</code><br>
+                                <span> WHERE </span>
+                                    {<br>
+                                    <code>?rId</code> reldv:hasSentence <code>?sent</code> .<br>
+                                    <code>?sent</code> reldv:numOfTokens <code>?nT</code> .<br>
+                                    <code>?sent</code> reldv:numBetToken <code>?tB</code> .<br>
+                                    FILTER (<code>?nT</code> < 25 && <code>?tB</code> > 5 )<br>
+                                    }
+                                    <span>LIMIT</span> 40
+                              </code>
+                              <code class='cd'>
+                                  <p>Selecting distinct relations based on number of sentences grouping </p><br>
+                                  <span>Prefix</span> reld: &lt;https://reld.dice-research.org/schema/&gt;<br>
+                                  <span> SELECT DISTINCT </span> <code> ?rId</code> ( AVG(<code>?nToken</code>) as <code>?avgToken</code> ) (count(<code>?ne</code>) as <code>?avgNE</code>)<br>
+                                  <span> WHERE </span>
+                                      {<br>
+                                        <code>?rId</code> reldv:hasSentence <code>?sentence</code> .</br>
+                                        <code>?sentence</code> reldv:numOfTokens <code>?nToken</code> .</br>
+                                        <code>?sentence</code> reldv:hasNamedEntity <code>?ne</code> .</br>
+                                      }
+                                      <span>Group by</span> <code>?rId</code> having(count (<code>?sentence</code> ) = 700)
+                                </code>
+
+
                   </div>
                 </div>
               </div>
