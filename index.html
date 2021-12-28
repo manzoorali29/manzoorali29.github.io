@@ -81,14 +81,14 @@ https://templatemo.com/tm-529-ramayana
                   width: 100px;
                   float:right;
                   background-color:#ffffff;
-                  margin-left: 150px;
+                  margin-right: 50px;
                   ">
                 <a href="https://dice-research.org/">  <img src="assets/images/dice-icon.png"/></a>
                 </div>
 
-<div>
+                <div>
                 <a href="index.html">RELD: <span style="text-transform: capitalize; color: gray;"> A Knowledge Graph of Relation Extraction Datasets</span></a>
-</div>
+              </div>
               </div>
             </header>
 
@@ -99,7 +99,7 @@ https://templatemo.com/tm-529-ramayana
 
 
             <!-- Top Image -->
-            <section class="top-image">
+            <section class="top-image" style="margin-top:0;">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-12">
@@ -357,6 +357,37 @@ For the detailed schema and it's description click on link below on Read More bu
               </div>
             </div>
           </section>
+          <!-- Usage-->
+          <section id="usage" class="top-image">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+
+                <div class="down-content">
+                  <h4>Usage and Technical details</h4>
+                  <h6>Named Graphs</h6>
+                  <p>To use the data of a single relation extraction dataset use a named graph. Named graphs in RELD are kept using the  <a href="#">https://reld.dice-research.org/<code>$dataset_name$</code></a>.
+                    <code>$dataset_name$</code> in URI represents the name of each dataset. For simplicity, we use the names of the datasets as shown in <a href="#tabnamed">Table</a>.</p>
+
+                    <h6>Relations</h6>
+                    <p>Each relation in the parent dataset is considered individually in a URI structured as <a href="#">https://reld.dice-research.org/resource<code>$R_ID$</code></a>.  <code>$R_ID$</code> is a unique id for each relation. RDFS labels contain the labels information of the relation. In the latest version of RELD there is a total of 824 relations. If a relation in two datasets is the same, they are connected by owl:sameAs property. Also owl: equivalent property is used to connect those relations which have the same meaning but different representations. All the details of the relations are available online <a href="https://github.com/dice-group/RELD/blob/main/AllRelationWithCrossCheck.csv">here</a> </p>
+                  <h6>Sentences</h6>
+                  <p>Sentences are connected to respective labeled relations in the URI format as <a href="#">https://reld.dice-research.org/resource<code>$S_DatasetName_ID$</code></a>. Dataset name in <code>$S_DatasetName_ID$</code> is the name present in <a href="tabnamed">Table</a>.
+                     All the properties of the sentences are attached to the sentences. The detail of each property is available online in our <a href="https://github.com/dice-group/RELD/blob/main/ontology.ttl">schema</a>.
+                  </p>
+                  <h6>Subject and Object</h6>
+                  <p>The subject represents the first entity in a sentence. In most cases, it is a named entity (PERSON, PLACE, DATE, etc,.) or nominal value. URIs used for subject and objects are <a href="#">https://reld.dice-research.org/resource<code>$sub_DatasetName_ID$</code></a> and <a href="#">https://reld.dice-research.org/resource<code>$obj_DatasetName_ID$</code></a> respectively. </p>
+
+                  <h6>Named Entity</h6>
+                  <p> Other named entities in a sentence are sometimes very useful especially training an ML algorithm. In RELD named entities are represented as  <a href="#">https://reld.dice-research.org/resource<code>$ne_FirstLetterOfDataset_ID$</code></a>. In <code>$ne_FirstLetterOfDataset_ID$</code> FirstLetterOfDataset comes from the dataset name, For example, for SemEval it is 's'.  </p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          </section>
+
+
             <!-- Availability 1-->
             <section class="right-image" id="endpoint">
               <div class="container-fluid">
@@ -417,10 +448,68 @@ For the detailed schema and it's description click on link below on Read More bu
             </div>
           </div>
         </section>
+
+
+        <!-- Tables -->
+        <section class="tables">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="section-heading">
+                  <h2>Tables</h2>
+                </div>
+                <div class="default-table">
+                  <table id="tabnamed">
+                    <caption>Named Graphs with their used names in RELD</caption
+                              <thead>
+                                <tr>
+                                  <th>Dataset</th>
+                                  <th>Named Graph</th>
+                                  <th>URI</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>NYT-FB RE</td>
+                                  <td>NYT-FB</td>
+                                  <td>http://reld.dice-research.org/NYT-FB</td>
+                                </tr>
+                                <tr>
+                                  <td>Google RE</td>
+                                  <td>Google_RE</td>
+                                  <td>http://reld.dice-research.org/Google_RE</td>
+                                </tr>
+                                <tr>
+                                  <td>Wikipedia-Wikidata RE</td>
+                                  <td>Wiki-RE</td>
+                                  <td>http://reld.dice-research.org/Wiki-RE</td>
+                                </tr>
+                                <tr>
+                                  <td>WEBNLG</td>
+                                  <td>WebNLG</td>
+                                  <td>http://reld.dice-research.org/WebNLG</td>
+                                </tr>
+                                <tr>
+                                  <td>SemEval 2010 Task 8</td>
+                                  <td>SemEval</td>
+                                  <td>http://reld.dice-research.org/SemEval</td>
+                                </tr>
+                                <tr>
+                                  <td>FewRel RE</td>
+                                  <td>FewRel</td>
+                                  <td>http://reld.dice-research.org/FewRel</td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
-        <!-- Source Code -->
-
       <!-- Sidebar -->
         <div id="sidebar">
 
@@ -446,7 +535,7 @@ For the detailed schema and it's description click on link below on Read More bu
                     <li><a href="#namespaces">Namespaces</a></li>
                     <li><a href="#example">Example Resource</a></li>
                     <li><a href="#query">Queries</a></li>
-                    <li><a href="#">Usage</a></li>
+                    <li><a href="#usage">Usage</a></li>
 
                   </ul>
                 </li>
