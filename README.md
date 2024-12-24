@@ -1,2 +1,2 @@
-# reld.github.io
-Site for RELD project
+# Github portfolio 
+This is my personal Github portfolio pages, I rarly find time to update it so may be not up-to-date, so apologies for that...
